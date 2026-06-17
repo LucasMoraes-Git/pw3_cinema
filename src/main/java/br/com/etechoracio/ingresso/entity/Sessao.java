@@ -35,7 +35,7 @@ public class Sessao {
 
     @JoinColumn(name = "ID_FILME")
     @ManyToOne
-    List<Filme> filmes;
+    private Filme filme;
 
 
 }

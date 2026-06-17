@@ -17,10 +17,10 @@ public class SessaoService {
     @Autowired
     private SessaoMapper sessaoMapper;
 
-    public List<SessaoBuscarDTO> buscarSessaosPorIdFilme(Long idFilme)
+    public List<SessaoBuscarDTO> buscarSessaosPorNomeFilme(String nomeFilme)
     {
         var sessoes = sessaoRepository.findAll();
-        var sessoesFiltradas = sessoes.stream().filter(sessao -> sessao.getFilmes().stream().filter(filme -> filme.getId() == idFilme).isParallel()).toList();
+        var sessoesFiltradas = sessoes.stream().filter(sessao -> sessao.getFilme().getNome().equals(nomeFilme)).toList();
         return sessaoMapper.retornarSessaoBuscadasDTOS(sessoesFiltradas);
     }
 }
